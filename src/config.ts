@@ -5,7 +5,7 @@ export const SITE: Site = {
   author: "Deepraj Baidya",
   profile: "https://avatars.githubusercontent.com/u/63138398?s=400&u=66d98019fd9d5365c1399a03d85fefd233a69919&v=4",
   desc: "",
-  title: "rwxr",
+  title: "List<Posts> of rwxr",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
   postPerIndex: 4,

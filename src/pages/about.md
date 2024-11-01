@@ -3,34 +3,14 @@ layout: ../layouts/AboutLayout.astro
 title: "About"
 ---
 
-<!-- AstroPaper is a minimal, responsive and SEO-friendly Astro blog theme. I designed and crafted this based on [my personal blog](https://satnaing.dev/blog).
+Hi, I'm Deepraj Baidya also known as **infamous**, **deepraj02** on the Internet, currently living in [Dehradun](https://www.google.com/search?q=dehradun&sca_esv=7d5ca3be01585382&sxsrf=ADLYWIJ5QKIRsWz1eNgWot4Plln-j7jS8Q%3A1730460036472&ei=hLkkZ4TFHPuVseMP3MqY2Qg&ved=0ahUKEwiEl5b-gbuJAxX7SmwGHVwlJosQ4dUDCA8&uact=5&oq=dehradun&gs_lp=Egxnd3Mtd2l6LXNlcnAiCGRlaHJhZHVuMgQQIxgnMg0QLhiABBixAxhDGIoFMgoQABiABBgUGIcCMggQABiABBixAzIFEAAYgAQyCBAAGIAEGLEDMggQABiABBixAzIKEAAYgAQYFBiHAjIIEAAYgAQYsQMyBRAAGIAESKMKUMIDWMIDcAF4AZABAJgB-wGgAfsBqgEDMi0xuAEDyAEA-AEBmAICoAKJAsICChAAGLADGNYEGEeYAwCIBgGQBgiSBwUxLjAuMaAH4gg&sclient=gws-wiz-serp) doing my Bachelor's.
 
-This theme is aimed to be accessible out of the box. Light and dark mode are supported by
-default and additional color schemes can also be configured.
+My journey into tech started back in high school when I first got my hands dirty with [Python](https://python.org), creating desktop applications using [Tkinter](https://docs.python.org/3/library/tkinter.html) and [PyQt](https://doc.qt.io/qtforpython-6/).
 
-This theme is self-documented \_ which means articles/posts in this theme can also be considered as documentations. So, see the documentation for more info.
+That initial spark of curiosity about how apps and websites work has grown into a full-blown passion for technology. 
 
-<div>
-  <img src="/assets/dev.svg" class="sm:w-1/2 mx-auto" alt="coding dev illustration">
-</div>
+A big Advocate for Open-Source and free/libre softwares.
 
-## Tech Stack
+I also Organise [Meetups](https://forum.fossunited.org/t/foss-meetups-dehradun-2024/2912) in Dehradun (almost every month), mostly focused on FOSS and OpenSource, with collaboration with 
+[FOSS United](https://fossunited.org/c/dehradun).
 
-This theme is written in vanilla JavaScript (+ TypeScript for type checking) and a little bit of ReactJS for some interactions. TailwindCSS is used for styling; and Markdown is used for blog contents.
-
-## Features
-
-Here are certain features of this site.
-
-- fully responsive and accessible
-- SEO-friendly
-- light & dark mode
-- fuzzy search
-- super fast performance
-- draft posts
-- pagination
-- sitemap & rss feed
-- highly customizable
-
-If you like this theme, you can star/contribute to the [repo](https://github.com/satnaing/astro-paper).  
-Or you can even give any feedback via my [email](mailto:contact@satnaing.dev). -->
