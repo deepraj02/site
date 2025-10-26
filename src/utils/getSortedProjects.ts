@@ -1,6 +1,6 @@
 import type { CollectionEntry } from "astro:content";
 
-const getSortedProjects = (projects: CollectionEntry<"project">[]) =>
+const getSortedProjects = (projects: CollectionEntry<"projects">[]) =>
   projects
     .filter(({ data }) => !data.draft)
     .sort(
