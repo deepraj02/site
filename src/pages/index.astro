@@ -1,20 +1,26 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "@layouts/Layout.astro";
-import Header from "@components/Header.astro";
-import Footer from "@components/Footer.astro";
-import LinkButton from "@components/LinkButton.astro";
-import Hr from "@components/Hr.astro";
-import Card from "@components/Card";
-import Socials from "@components/Socials.astro";
-import getSortedPosts from "@utils/getSortedPosts";
-import { SITE, SOCIALS } from "@config";
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import LinkButton from "../components/LinkButton.astro";
+import Hr from "../components/Hr.astro";
+import Card from "../components/Card";
+import ExperienceCard from "../components/ExperienceCard.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+import Socials from "../components/Socials.astro";
+import getSortedPosts from "../utils/getSortedPosts";
+import getSortedExperience from "../utils/getSortedExperience";
+import getSortedProjects from "../utils/getSortedProjects";
+import { SITE, SOCIALS } from "../config";
 
 const posts = await getCollection("blog");
+const experiences = await getCollection("experience");
+const projects = await getCollection("projects");
 
 const sortedPosts = getSortedPosts(posts);
-const featuredPosts = sortedPosts.filter(({ data }) => data.featured);
-const recentPosts = sortedPosts.filter(({ data }) => !data.featured);
+const sortedExperience = getSortedExperience(experiences);
+const sortedProjects = getSortedProjects(projects);
 
 const socialCount = SOCIALS.filter(social => social.active).length;
 ---
@@ -42,9 +48,22 @@ const socialCount = SOCIALS.filter(social => social.active).length;
       </a>
 
       <p>
-        01000101 01101110 01100111 01101001 01101110 01100101 01100101 01110010
+        I suffer from a chronic case of "just one more feature" syndrome, which
+        somehow led me from Computer Science lectures to founding Startups to
+        organizing FOSS meetups. 
+        <br></br>
+        These days I'm a full-stack engineer who
+        compulsively switches between Python, Go, Dart and whatever language or
+        Framework seems fun that week. 
+        I co-founded Kairo where I built tools
+        that helps gather analytics and user feedback from your product,
+        organized the FOSS United chapter in Dehradun to spread the open-source
+        faith. 
+        <br></br>
+        When I'm not maintaining opensource projects or speaking at
+        conferences, you can find me playing football, reading about new
+        technologies and adding another side-project to my "definitely gonna finish this" collection.
       </p>
-      
       {
         socialCount > 0 && (
           <div class="social-wrapper">
@@ -58,31 +77,59 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     <Hr />
 
     {
-      featuredPosts.length > 0 && (
+      sortedExperience.length > 0 && (
         <>
-          <section id="featured">
-            <h2>Featured</h2>
+          <section id="experience">
+            <h2>Experience</h2>
             <ul>
-              {featuredPosts.map(({ data, slug }) => (
-                <Card
-                  href={`/posts/${slug}/`}
-                  frontmatter={data}
-                  secHeading={false}
-                />
+              {sortedExperience.slice(0, 2).map(exp => (
+                <ExperienceCard experience={exp} />
               ))}
             </ul>
+            <div class="all-posts-btn-wrapper">
+              <LinkButton href="/experience/">
+                All Experience
+                <svg xmlns="http://www.w3.org/2000/svg">
+                  <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z" />
+                </svg>
+              </LinkButton>
+            </div>
           </section>
-          {recentPosts.length > 0 && <Hr />}
+          <Hr />
         </>
       )
     }
 
     {
-      recentPosts.length > 0 && (
+      sortedProjects.length > 0 && (
+        <>
+          <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+              {sortedProjects.slice(0, 4).map(project => (
+                <ProjectCard project={project} />
+              ))}
+            </ul>
+            <div class="all-posts-btn-wrapper">
+              <LinkButton href="/projects/">
+                All Projects
+                <svg xmlns="http://www.w3.org/2000/svg">
+                  <path d="m11.293 17.293 1.414 1.414L19.414 12l-6.707-6.707-1.414 1.414L15.586 11H6v2h9.586z" />
+                </svg>
+              </LinkButton>
+            </div>
+          </section>
+          <Hr />
+        </>
+      )
+    }
+
+    {
+      sortedPosts.length > 0 && (
         <section id="recent-posts">
           <h2>Recent Posts</h2>
           <ul>
-            {recentPosts.map(
+            {sortedPosts.map(
               ({ data, slug }, index) =>
                 index < SITE.postPerIndex && (
                   <Card
@@ -136,16 +183,18 @@ const socialCount = SOCIALS.filter(social => social.active).length;
     @apply mb-1 mr-2 whitespace-nowrap sm:mb-0;
   }
 
-  /* ===== Featured & Recent Posts Sections ===== */
-  #featured,
+  /* ===== Experience, Projects & Recent Posts Sections ===== */
+  #experience,
+  #projects,
   #recent-posts {
-    @apply pb-6 pt-12;
+    @apply pb-4 pt-6;
   }
-  #featured h2,
+  #experience h2,
+  #projects h2,
   #recent-posts h2 {
     @apply text-2xl font-semibold tracking-wide;
   }
   .all-posts-btn-wrapper {
-    @apply my-8 text-center;
+    @apply my-6 text-center;
   }
 </style>

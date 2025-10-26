@@ -1,0 +1,57 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  experience: CollectionEntry<"experience">;
+}
+
+const { experience } = Astro.props;
+const { company, role, startDate, endDate, companyUrl } = experience.data;
+const { Content } = await experience.render();
+
+const formatDate = (date: Date) => {
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+  });
+};
+---
+
+<li class="my-3">
+  <div class="inline-block w-full">
+    {
+      companyUrl ? (
+        <a href={companyUrl} target="_blank" rel="noopener noreferrer">
+          <h3 class="text-lg font-medium text-skin-accent decoration-dashed hover:underline">
+            {company}
+          </h3>
+        </a>
+      ) : (
+        <h3 class="text-lg font-medium text-skin-accent decoration-dashed">
+          {company}
+        </h3>
+      )
+    }
+    <p class="text-sm italic opacity-80">{role}</p>
+    <div class="my-1 flex items-center space-x-2 opacity-70">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="inline-block h-6 w-6 min-w-[1.375rem] scale-90 fill-skin-base"
+        aria-hidden="true"
+      >
+        <path
+          d="M7 11h2v2H7zm0 4h2v2H7zm4-4h2v2h-2zm0 4h2v2h-2zm4-4h2v2h-2zm0 4h2v2h-2z"
+        ></path>
+        <path
+          d="M5 22h14c1.103 0 2-.897 2-2V6c0-1.103-.897-2-2-2h-2V2h-2v2H9V2H7v2H5c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2zM19 8l.001 12H5V8h14z"
+        ></path>
+      </svg>
+      <span class="text-sm">
+        {formatDate(startDate)} | {endDate ? formatDate(endDate) : "Present"}
+      </span>
+    </div>
+    <div class="mt-2">
+      <Content />
+    </div>
+  </div>
+</li>

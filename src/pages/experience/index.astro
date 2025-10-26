@@ -1,0 +1,23 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import Main from "../../layouts/Main.astro";
+import ExperienceCard from "../../components/ExperienceCard.astro";
+import getSortedExperience from "../../utils/getSortedExperience";
+import { SITE } from "../../config";
+
+const experiences = await getCollection("experience");
+const sortedExperience = getSortedExperience(experiences);
+---
+
+<Layout title={`Experience | ${SITE.title}`}>
+  <Header activeNav="experience" />
+  <Main pageTitle="Experience" pageDesc="All my professional experience.">
+    <ul>
+      {sortedExperience.map(exp => <ExperienceCard experience={exp} />)}
+    </ul>
+  </Main>
+  <Footer />
+</Layout>
