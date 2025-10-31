@@ -1,5 +1,5 @@
 ---
-company: "Voxel "
+company: "Voxel Networks"
 role: "Technical Lead"
 startDate: 2025-06-01
 companyUrl: "https://www.linkedin.com/company/zenzian/"
